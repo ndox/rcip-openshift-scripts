@@ -27,8 +27,8 @@ function openshift_prune {
 	/usr/bin/oadm prune builds --confirm  2>&1 >> $LOGFILE
 	echo "$(datenow) openshift-prune deployments" >> $LOGFILE
 	/usr/bin/oadm prune deployments --confirm  2>&1 >> $LOGFILE
-	#echo "$(datenow) openshift-prune images" >> $LOGFILE
-	#/usr/bin/oadm prune images --confirm  2>&1 >> $LOGFILE
+	echo "$(datenow) openshift-prune images" >> $LOGFILE
+	/usr/bin/oadm prune images --confirm --keep-younger-than=10080  2>&1 >> $LOGFILE
 }
 
 function docker_prune {
